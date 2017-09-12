@@ -1,0 +1,40 @@
+<% include header %>
+
+  <form class="ui form" action="/" method="post">
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea name="message" id="message"></textarea>
+    </div>
+
+    <button type="submit" class="ui blue labeled submit icon button">
+      <i class="icon edit"></i>Send
+    </button>
+  </form>
+
+  <div class="ui comments">
+    <h3 class="ui dividing header">Comments</h3>
+
+    <% for (message of messages) { %>
+
+      <div class="comment">
+        <a href="/message/<%= message.id %>">
+          <img src="/assets/user.png" alt="user">
+        </a>
+
+        <div class="content">
+          <div class="metadata">
+            <div class="date">
+              <%= message.created_at.fromNow() %>
+            </div>
+          </div>
+          <div class="test">
+            <%= message.content %>
+          </div>
+        </div>
+      </div>
+
+      <% } %>
+  </div>
+
+  <% include footer %>
